@@ -14,16 +14,22 @@ import java.util.concurrent.ExecutionException;
 
 @Repository
 public class UserRepository implements IUserRepository {
+
+    private final Firestore dbFirestore;
+
+    @Autowired
+    public UserRepository(Firestore dbFirestore) {
+        this.dbFirestore = dbFirestore;
+    }
+
     @Override
     public String createUser(User user) throws InterruptedException, ExecutionException {
-        Firestore dbFirestore = FirestoreClient.getFirestore();
         ApiFuture<WriteResult> collectionsApiFuture = dbFirestore.collection("User").document().set(user);
         return collectionsApiFuture.get().getUpdateTime().toString();
     }
 
     @Override
     public User getUser(String id) throws InterruptedException, ExecutionException {
-        Firestore dbFirestore = FirestoreClient.getFirestore();
         DocumentReference documentReference = dbFirestore.collection("User").document(id);
         ApiFuture<DocumentSnapshot> future = documentReference.get();
         DocumentSnapshot document = future.get();

@@ -13,8 +13,7 @@ import java.io.InputStream;
 
 @Service
 public class FirebaseInitializer {
-    @PostConstruct
-    private void initFirestore() throws IOException {
+    public FirebaseInitializer() throws IOException {
         InputStream serviceAccount = getClass()
                 .getClassLoader()
                 .getResourceAsStream("firebase-key.json");
