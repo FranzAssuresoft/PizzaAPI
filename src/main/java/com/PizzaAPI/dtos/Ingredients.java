@@ -5,6 +5,9 @@ public class Ingredients {
 	private String Name;
 	private double Price;
 	
+	public Ingredients() {
+		
+	}
 	public Ingredients(String id, String name, double price) {
 		super();
 		Id = id;

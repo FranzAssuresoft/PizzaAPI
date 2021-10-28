@@ -1,6 +1,6 @@
 package com.PizzaAPI.Controller;
 
-import java.util.ArrayList;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,7 +17,7 @@ public class IngredientsController {
 	
 	@Autowired private IIngredientsService ingredientsService;
 	@GetMapping()
-	public ArrayList<Ingredients> getAllIngredients(){
+	public List<Ingredients> getAllIngredients(){
 		return ingredientsService.getAllIngredients();
 		
 	}

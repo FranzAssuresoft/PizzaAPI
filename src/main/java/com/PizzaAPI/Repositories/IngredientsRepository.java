@@ -17,7 +17,6 @@ import com.google.cloud.firestore.Firestore;
 import com.google.cloud.firestore.QueryDocumentSnapshot;
 import com.google.cloud.firestore.QuerySnapshot;
 import com.google.firebase.cloud.FirestoreClient;
-import com.google.firebase.database.FirebaseDatabase;
 
 @Repository
 public class IngredientsRepository implements IIngredientsRepository {
@@ -26,27 +25,23 @@ public class IngredientsRepository implements IIngredientsRepository {
 	private Firestore firestore;
 
 	@Override
-	public ArrayList<Ingredients> getAllIngredients() {
-		ArrayList<Ingredients> ingredients = new ArrayList<>();	      
+	public List<Ingredients> getAllIngredients() {
+	    List<Ingredients> ingredients= new ArrayList<Ingredients>();
 		firestore = FirestoreClient.getFirestore();
-		CollectionReference documentReference = firestore.collection("Ingredient");
-		ApiFuture<QuerySnapshot> future =
-		firestore.collection("Ingredients").get();
+		CollectionReference ingredientReference = firestore.collection("Ingredients");
+		ApiFuture<QuerySnapshot> future = firestore.collection("Ingredients").get();
 		List<QueryDocumentSnapshot> documents = null;
 		try {
 			documents = future.get().getDocuments();
 		} catch (InterruptedException | ExecutionException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	
 		for (DocumentSnapshot document : documents) {
-			Ingredients ingredient = new Ingredients(document.getId(),document.getData().values().toArray()[1].toString(),Double.parseDouble(document.getData().values().toArray()[0].toString()));
+			Ingredients ingredient = new Ingredients();
+			ingredient = document.toObject(Ingredients.class);
 			ingredients.add(ingredient);
-            document.getData().values();
-            System.out.println(document.getData().values().toArray()[1]);
-		    document.getId();
-		}
+		 }	
 		
 		   return ingredients; 
 	 	
