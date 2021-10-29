@@ -1,12 +1,8 @@
 package com.PizzaAPI.Repositories;
 
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.concurrent.ExecutionException;
-
 
 import org.springframework.stereotype.Repository;
 import com.PizzaAPI.dtos.Ingredients;
@@ -39,6 +35,7 @@ public class IngredientsRepository implements IIngredientsRepository {
 			this.firestore = FirestoreClient.getFirestore();
 		}
 		CollectionReference ingredientReference = firestore.collection("Ingredients");
+		
 		ApiFuture<QuerySnapshot> future = ingredientReference.get();
 		List<QueryDocumentSnapshot> documents = null;
 		try {
@@ -54,12 +51,7 @@ public class IngredientsRepository implements IIngredientsRepository {
 		 }
 		
 	    }
-		   return ingredients; 
-	 	
-		
-		  }
-
-	
-
-
+	    
+	    return ingredients; 
+	}
 }
