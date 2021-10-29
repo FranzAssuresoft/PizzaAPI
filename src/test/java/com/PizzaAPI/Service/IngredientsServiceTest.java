@@ -17,9 +17,6 @@ import com.PizzaAPI.dtos.Ingredients;
 
 @RunWith(MockitoJUnitRunner.Silent.class)
 public class IngredientsServiceTest {
-	
-
-   	
 
     @Mock
 	IIngredientsRepository ingredientsRepository;

@@ -12,11 +12,14 @@ import com.PizzaAPI.dtos.Ingredients;
 @Service
 public class IngredientsService implements  IIngredientsService{
     
-    @Autowired IIngredientsRepository ingredientsRepository;
+    @Autowired 
+    IIngredientsRepository ingredientsRepository;
+    
 	public IngredientsService(IIngredientsRepository ingredientRepository)
 	{
 		this.ingredientsRepository = ingredientRepository;
 	}
+	
 	@Override
 	public List<Ingredients> getAllIngredients() {
 		return ingredientsRepository.getAllIngredients();

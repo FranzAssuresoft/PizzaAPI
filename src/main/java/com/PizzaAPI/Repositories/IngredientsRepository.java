@@ -37,7 +37,6 @@ public class IngredientsRepository implements IIngredientsRepository {
 	    List<Ingredients> ingredients= new ArrayList<Ingredients>();
 		if(this.firestore == null) {
 			this.firestore = FirestoreClient.getFirestore();
-			System.out.println("Entró!!!!!!");
 		}
 		CollectionReference ingredientReference = firestore.collection("Ingredients");
 		ApiFuture<QuerySnapshot> future = ingredientReference.get();

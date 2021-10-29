@@ -8,14 +8,20 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.PizzaAPI.Service.IIngredientsService;
-import com.PizzaAPI.Service.IngredientsService;
 import com.PizzaAPI.dtos.Ingredients;
 
 @RestController
 @RequestMapping("/ingredients")
 public class IngredientsController {
 	
-	@Autowired private IIngredientsService ingredientsService;
+	@Autowired 
+	private IIngredientsService ingredientsService;
+	
+	public IngredientsController(IIngredientsService ingredientsService)
+	{
+		this.ingredientsService = ingredientsService;
+	}
+	
 	@GetMapping()
 	public List<Ingredients> getAllIngredients(){
 		return ingredientsService.getAllIngredients();
