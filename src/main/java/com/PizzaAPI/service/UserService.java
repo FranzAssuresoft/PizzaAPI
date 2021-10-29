@@ -1,4 +1,5 @@
 package com.PizzaAPI.service;
+import java.util.List;
 import java.util.concurrent.ExecutionException;
 
 import com.PizzaAPI.repositories.IUserRepository;
@@ -30,7 +31,16 @@ public class UserService implements IUserService {
 	}
 
 	@Override
+<<<<<<< HEAD
 	public Boolean deleteUser(String id) {
+=======
+	public List<User> getAllUser() throws InterruptedException, ExecutionException {
+		return iUserRepository.getAllUser();
+	}
+
+	@Override
+	public String deleteUser(String id) {
+>>>>>>> 3e286069ba42b4e4dee89f03a2cc15542276986b
 		return null;
 	}
 
@@ -38,4 +48,5 @@ public class UserService implements IUserService {
 	public User updateUser(User User) {
 		return null;
 	}
+
 }
