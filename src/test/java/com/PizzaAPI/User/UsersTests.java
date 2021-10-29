@@ -1,23 +1,29 @@
-package User;
+package com.PizzaAPI.User;
 
 import com.PizzaAPI.dtos.User;
+import java.util.List;
+
 import com.PizzaAPI.repositories.IUserRepository;
 import com.PizzaAPI.repositories.UserRepository;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
+
+import org.junit.runner.RunWith;
+import org.mockito.Mock;
+import org.mockito.Mockito;
+import org.mockito.junit.MockitoJUnitRunner;
+
 import com.google.api.core.ApiFuture;
 import com.google.cloud.firestore.CollectionReference;
 import com.google.cloud.firestore.Firestore;
 import com.google.cloud.firestore.QueryDocumentSnapshot;
 import com.google.cloud.firestore.QuerySnapshot;
-import org.junit.jupiter.api.Test;
-import org.junit.runner.RunWith;
-import org.mockito.Mock;
-import org.mockito.Mockito;
-import org.mockito.junit.MockitoJUnitRunner;
-import java.util.List;
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import org.springframework.boot.test.context.SpringBootTest;
 
+@SpringBootTest
 @RunWith(MockitoJUnitRunner.Silent.class)
-public class UsersTests {
+class UsersTests {
+
     @Mock
     private QuerySnapshot fakeQuerySnapshot;
 
@@ -43,6 +49,6 @@ public class UsersTests {
 
         IUserRepository sut = new UserRepository(mockFirestore);
         List<User> result = sut.getAllUsers();
-        assertEquals(0, result.size());
+        Assertions.assertEquals(0, result.size());
     }
 }
