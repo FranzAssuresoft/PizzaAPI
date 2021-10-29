@@ -10,6 +10,7 @@ import com.google.firebase.cloud.FirestoreClient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import java.io.Console;
 import java.util.concurrent.ExecutionException;
 
 @Repository
@@ -23,9 +24,10 @@ public class UserRepository implements IUserRepository {
     }
 
     @Override
-    public String createUser(User user) throws InterruptedException, ExecutionException {
+    public User createUser(User user) throws InterruptedException, ExecutionException {
         ApiFuture<WriteResult> collectionsApiFuture = dbFirestore.collection("User").document().set(user);
-        return collectionsApiFuture.get().getUpdateTime().toString();
+//        System.out.println(collectionsApiFuture.get().getUpdateTime());
+        return user;
     }
 
     @Override
@@ -41,13 +43,13 @@ public class UserRepository implements IUserRepository {
     }
 
     @Override
-    public String deleteUser(String id) {
+    public Boolean deleteUser(String id) {
         // TODO Auto-generated method stub
         return null;
     }
 
     @Override
-    public String updateUser(User User) {
+    public User updateUser(User User) {
         // TODO Auto-generated method stub
         return null;
     }

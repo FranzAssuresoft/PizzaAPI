@@ -26,7 +26,7 @@ public class UserController {
 	}
 
 	@PostMapping("/create")
-	public String createUser(@RequestBody User user) throws InterruptedException, ExecutionException {
+	public User createUser(@RequestBody User user) throws InterruptedException, ExecutionException {
 		return iUserService.createUser(user);
 	}
 	
@@ -36,12 +36,12 @@ public class UserController {
 	}
 	
 	@PutMapping("/update")
-	public String updateUser(@RequestBody User User) throws InterruptedException, ExecutionException {
+	public User updateUser(@RequestBody User User) throws InterruptedException, ExecutionException {
 		return iUserService.updateUser(User);
 	}
 	
 	@DeleteMapping("/delete")
-	public String deleteUser(@RequestBody String id) throws InterruptedException, ExecutionException {
+	public Boolean deleteUser(@RequestBody String id) throws InterruptedException, ExecutionException {
 		return iUserService.deleteUser(id);
 	}
 }

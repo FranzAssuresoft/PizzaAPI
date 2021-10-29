@@ -20,7 +20,7 @@ public class UserService implements IUserService {
 	}
 
 	@Override
-	public String createUser(User user) throws InterruptedException, ExecutionException {
+	public User createUser(User user) throws InterruptedException, ExecutionException {
 		return iUserRepository.createUser(user);
 	}
 
@@ -30,12 +30,12 @@ public class UserService implements IUserService {
 	}
 
 	@Override
-	public String deleteUser(String id) {
+	public Boolean deleteUser(String id) {
 		return null;
 	}
 
 	@Override
-	public String updateUser(User User) {
+	public User updateUser(User User) {
 		return null;
 	}
 }

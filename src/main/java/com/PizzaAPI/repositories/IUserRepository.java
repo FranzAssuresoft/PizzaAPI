@@ -7,11 +7,11 @@ import java.util.concurrent.ExecutionException;
 
 @Repository
 public interface IUserRepository {
-    String createUser(User user) throws InterruptedException, ExecutionException;
+    User createUser(User user) throws InterruptedException, ExecutionException;
 
     User getUser(String id) throws InterruptedException, ExecutionException;
 
-    String deleteUser(String id);
+    Boolean deleteUser(String id);
 
-    String updateUser(User User);
+    User updateUser(User User);
 }
