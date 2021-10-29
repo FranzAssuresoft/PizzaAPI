@@ -23,26 +23,38 @@ public class IngredientsRepository implements IIngredientsRepository {
 	
 	
 	private Firestore firestore;
+	
+	public IngredientsRepository (Firestore firestore) {
+		this.firestore = firestore;
+	}
+	
+	public IngredientsRepository() {
+		
+	}
 
 	@Override
 	public List<Ingredients> getAllIngredients() {
 	    List<Ingredients> ingredients= new ArrayList<Ingredients>();
-		firestore = FirestoreClient.getFirestore();
+		if(this.firestore == null) {
+			this.firestore = FirestoreClient.getFirestore();
+			System.out.println("Entró!!!!!!");
+		}
 		CollectionReference ingredientReference = firestore.collection("Ingredients");
-		ApiFuture<QuerySnapshot> future = firestore.collection("Ingredients").get();
+		ApiFuture<QuerySnapshot> future = ingredientReference.get();
 		List<QueryDocumentSnapshot> documents = null;
 		try {
 			documents = future.get().getDocuments();
 		} catch (InterruptedException | ExecutionException e) {
 			e.printStackTrace();
 		}
-	
+	    if(documents.size()>0) {
 		for (DocumentSnapshot document : documents) {
 			Ingredients ingredient = new Ingredients();
 			ingredient = document.toObject(Ingredients.class);
 			ingredients.add(ingredient);
-		 }	
+		 }
 		
+	    }
 		   return ingredients; 
 	 	
 		
