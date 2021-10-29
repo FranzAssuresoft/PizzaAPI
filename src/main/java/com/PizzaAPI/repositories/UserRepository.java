@@ -12,13 +12,8 @@ import com.google.cloud.firestore.WriteResult;
 import com.google.firebase.cloud.FirestoreClient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-
-<<<<<<< HEAD
-import java.io.Console;
-=======
 import java.util.ArrayList;
 import java.util.List;
->>>>>>> 3e286069ba42b4e4dee89f03a2cc15542276986b
 import java.util.concurrent.ExecutionException;
 
 @Repository
@@ -30,7 +25,6 @@ public class UserRepository implements IUserRepository {
     public UserRepository(Firestore dbFirestore) {
         this.dbFirestore = dbFirestore;
     }
-
     @Override
     public User createUser(User user) throws InterruptedException, ExecutionException {
         ApiFuture<WriteResult> collectionsApiFuture = dbFirestore.collection("User").document().set(user);
@@ -51,10 +45,7 @@ public class UserRepository implements IUserRepository {
     }
 
     @Override
-<<<<<<< HEAD
-    public Boolean deleteUser(String id) {
-=======
-    public List<User> getAllUser() throws InterruptedException, ExecutionException {
+    public List<User> getAllUsers() throws InterruptedException, ExecutionException {
         List<User> users = new ArrayList<User>();
         ApiFuture<QuerySnapshot> future = dbFirestore.collection("User").get();
         List<QueryDocumentSnapshot> documents = null;
@@ -74,10 +65,9 @@ public class UserRepository implements IUserRepository {
     }
 
     @Override
-    public String deleteUser(String id) {
->>>>>>> 3e286069ba42b4e4dee89f03a2cc15542276986b
+    public Boolean deleteUser(String id) {
         // TODO Auto-generated method stub
-        return null;
+        return false;
     }
 
     @Override

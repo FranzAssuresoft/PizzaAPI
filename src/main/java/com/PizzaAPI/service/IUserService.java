@@ -12,13 +12,9 @@ public interface IUserService {
 
     User getUser(String id) throws InterruptedException, ExecutionException;
 
-<<<<<<< HEAD
     Boolean deleteUser(String id);
-=======
-    List<User> getAllUser() throws InterruptedException, ExecutionException;
 
-    String deleteUser(String id);
->>>>>>> 3e286069ba42b4e4dee89f03a2cc15542276986b
+    List<User> getAllUsers() throws InterruptedException, ExecutionException;
 
     User updateUser(User User);
 }

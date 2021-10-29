@@ -12,13 +12,9 @@ public interface IUserRepository {
 
     User getUser(String id) throws InterruptedException, ExecutionException;
 
-<<<<<<< HEAD
-    Boolean deleteUser(String id);
-=======
-    List<User> getAllUser() throws InterruptedException, ExecutionException;
+    List<User> getAllUsers() throws InterruptedException, ExecutionException;
 
-    String deleteUser(String id);
->>>>>>> 3e286069ba42b4e4dee89f03a2cc15542276986b
+    Boolean deleteUser(String id);
 
     User updateUser(User User);
 }

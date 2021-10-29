@@ -13,9 +13,7 @@ import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.MockitoJUnitRunner;
-
 import java.util.List;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @RunWith(MockitoJUnitRunner.Silent.class)
@@ -27,24 +25,24 @@ public class UsersTests {
     private List<QueryDocumentSnapshot> fakeListQuerySnapshot;
 
     @Mock
-    private CollectionReference fakeCollectionIngredients;
+    private CollectionReference fakeCollectionUser;
+
     @Mock
     private ApiFuture<QuerySnapshot> fakeFuture;
 
     @Mock
-    private Firestore IngredientsDB;
+    private Firestore userDB;
 
     @Test
-    public void getAllIngredients() throws Exception{
+    public void getAllUsers() throws Exception{
         Firestore mockFirestore = Mockito.mock(Firestore.class);
         Mockito.when(fakeQuerySnapshot.getDocuments()).thenReturn(fakeListQuerySnapshot);
         Mockito.when(fakeFuture.get()).thenReturn(fakeQuerySnapshot);
-        Mockito.when(fakeCollectionIngredients.get()).thenReturn(fakeFuture);
-        Mockito.when(mockFirestore.collection("Ingredients")).thenReturn(fakeCollectionIngredients);
-
+        Mockito.when(fakeCollectionUser.get()).thenReturn(fakeFuture);
+        Mockito.when(mockFirestore.collection("Users")).thenReturn(fakeCollectionUser);
 
         IUserRepository sut = new UserRepository(mockFirestore);
-//        List<User> result = sut.getAllUsers();
-//        assertEquals(0, result.size());
+        List<User> result = sut.getAllUsers();
+        assertEquals(0, result.size());
     }
 }

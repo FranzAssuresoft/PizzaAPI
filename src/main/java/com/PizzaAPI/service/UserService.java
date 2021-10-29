@@ -31,16 +31,12 @@ public class UserService implements IUserService {
 	}
 
 	@Override
-<<<<<<< HEAD
-	public Boolean deleteUser(String id) {
-=======
-	public List<User> getAllUser() throws InterruptedException, ExecutionException {
-		return iUserRepository.getAllUser();
+	public List<User> getAllUsers() throws InterruptedException, ExecutionException {
+		return iUserRepository.getAllUsers();
 	}
 
 	@Override
-	public String deleteUser(String id) {
->>>>>>> 3e286069ba42b4e4dee89f03a2cc15542276986b
+	public Boolean deleteUser(String id) {
 		return null;
 	}
 

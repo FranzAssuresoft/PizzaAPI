@@ -36,28 +36,18 @@ public class UserController {
 		return iUserService.getUser(id);
 	}
 
-	@GetMapping("/getAllUser")
+	@GetMapping("/getAllUsers")
 	public List<User> getUser() throws InterruptedException, ExecutionException {
-		return iUserService.getAllUser();
+		return iUserService.getAllUsers();
 	}
 	
-<<<<<<< HEAD
-	@PutMapping("/update")
+	@PutMapping("/updateUser")
 	public User updateUser(@RequestBody User User) throws InterruptedException, ExecutionException {
 		return iUserService.updateUser(User);
 	}
 	
-	@DeleteMapping("/delete")
-	public Boolean deleteUser(@RequestBody String id) throws InterruptedException, ExecutionException {
-=======
-	@PutMapping("/updateUser")
-	public String updateUser(@RequestBody User User) throws InterruptedException, ExecutionException {
-		return iUserService.updateUser(User);
-	}
-	
 	@DeleteMapping("/deleteUser")
-	public String deleteUser(@RequestBody String id) throws InterruptedException, ExecutionException {
->>>>>>> 3e286069ba42b4e4dee89f03a2cc15542276986b
+	public Boolean deleteUser(@RequestBody String id) throws InterruptedException, ExecutionException {
 		return iUserService.deleteUser(id);
 	}
 }
