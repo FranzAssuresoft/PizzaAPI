@@ -1,4 +1,4 @@
-package com.PizzaAPI.Firebase;
+package com.PizzaAPI.firebase;
 
 import com.google.auth.oauth2.GoogleCredentials;
 import com.google.cloud.firestore.Firestore;
@@ -8,14 +8,12 @@ import com.google.firebase.cloud.FirestoreClient;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.PostConstruct;
-import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 
 @Service
 public class FirebaseInitializer {
-    @PostConstruct
-    private void initFirestore() throws IOException {
+    public FirebaseInitializer() throws IOException {
         InputStream serviceAccount = getClass()
                 .getClassLoader()
                 .getResourceAsStream("firebase-key.json");
